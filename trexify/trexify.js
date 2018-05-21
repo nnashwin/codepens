@@ -15,31 +15,45 @@ const trexify = () => {
 		animation-duration: 1s;\
 		animation-name: trexRun;\
 		animation-iteration-count: 1;\
-		animation-timing-function: ease-in-out;\
+		animation-timing-function: smooth;\
 		animation-fill-mode: forwards;\
 	}\
 	@-webkit-keyframes trexRun {\
-		0%, 100% {\
+		0%, 99% {\
 			margin-left: -100%;\
-			width: 100%;\
-			display: none;\
+			width: 0;\
+			height: 0;\
 		}\
 		50% {\
 			margin-left: 0%;\
 			width: 100%;\
 			display: block;\
+		}\
+		100% {\
+			margin-left: -100%;\
+			width: 0;\
+			height: 0;\
+			display: none;\
+			visibility: hidden;\
 		}\
 	}\
 	@-moz-keyframes trexRun {\
-		0%, 100% {\
+		0%, 99% {\
 			margin-left: -100%;\
-			width: 100%;\
-			display: none;\
+			width: 0;\
+			height: 0;\
 		}\
 		50% {\
 			margin-left: 0%;\
 			width: 100%;\
 			display: block;\
+		}\
+		100% {\
+			margin-left: -100%;\
+			width: 0;\
+			height: 0;\
+			display: none;\
+			visibility: hidden;\
 		}\
 	}\
 	'
