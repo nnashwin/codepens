@@ -32,76 +32,77 @@ const createHoldDiv = (holdDivId) => {
 }
 
 const trexify = (soundFileSrc, trexSrcImg) => {
-	const holdDiv = createHoldDiv('holdDiv'),
-		trexDiv = createTrexDiv(trexSrcImg),
-		godAudioDiv = createTrexSound(soundFileSrc)
+	// returns a function / thunk that can be delay invoking of the function to when the event is fired
+	return function() {
+		const holdDiv = createHoldDiv('holdDiv'),
+			trexDiv = createTrexDiv(trexSrcImg),
+			godAudioDiv = createTrexSound(soundFileSrc)
 
-	let style = document.createElement('style')
-	style.type = 'text/css'
+		let style = document.createElement('style')
+		style.type = 'text/css'
 
-	const randomNum = Math.round(Math.random())
+		const randomNum = Math.round(Math.random())
 
-	const marginMod = randomNum > 0 ? '100%' : '-100%'
-	const transformMod = randomNum > 0 ? '-1' : '1'
-	
-	let keyFrames = `
-	#trexImg {
-		transform: scaleX(${transformMod});
-	}
-	#holdDiv {
-		animation-duration: 0.7s;
-		animation-name: trexRun;
-		animation-iteration-count: 1;
-		animation-timing-function: smooth;
-		animation-fill-mode: forwards;
-	}
-	@-webkit-keyframes trexRun {
-		0%, 99% {
-			margin-left: ${marginMod};
-			width: 0;
-			height: 0;
+		const marginMod = randomNum > 0 ? '100%' : '-100%'
+		const transformMod = randomNum > 0 ? '-1' : '1'
+		
+		let keyFrames = `
+		#trexImg {
+			transform: scaleX(${transformMod});
 		}
-		50% {
-			margin-left: 0%;
-			width: 100%;
-			display: block;
+		#holdDiv {
+			animation-duration: 0.7s;
+			animation-name: trexRun;
+			animation-iteration-count: 1;
+			animation-timing-function: smooth;
+			animation-fill-mode: forwards;
 		}
-		100% {
-			margin-left: ${marginMod};
-			width: 0;
-			height: 0;
-			display: none;
-			visibility: hidden;
+		@-webkit-keyframes trexRun {
+			0%, 99% {
+				margin-left: ${marginMod};
+				width: 0;
+				height: 0;
+			}
+			50% {
+				margin-left: 0%;
+				width: 100%;
+				display: block;
+			}
+			100% {
+				margin-left: ${marginMod};
+				width: 0;
+				height: 0;
+				display: none;
+				visibility: hidden;
+			}
 		}
-	}
-	@-moz-keyframes trexRun {
-		0%, 99% {
-			margin-left: ${marginMod};
-			width: 0;
-			height: 0;
+		@-moz-keyframes trexRun {
+			0%, 99% {
+				margin-left: ${marginMod};
+				width: 0;
+				height: 0;
+			}
+			50% {
+				margin-left: 0%;
+				width: 100%;
+				display: block;
+			}
+			100% {
+				margin-left: ${marginMod};
+				width: 0;
+				height: 0;
+				display: none;
+				visibility: hidden;
+			}
 		}
-		50% {
-			margin-left: 0%;
-			width: 100%;
-			display: block;
-		}
-		100% {
-			margin-left: ${marginMod};
-			width: 0;
-			height: 0;
-			display: none;
-			visibility: hidden;
-		}
-	}
-	`
+		`
 
-	style.innerHTML = keyFrames
-	holdDiv.appendChild(style)
-	holdDiv.appendChild(trexDiv)	
-	document.body.appendChild(holdDiv)
-	holdDiv.appendChild(godAudioDiv)
+		style.innerHTML = keyFrames
+		holdDiv.appendChild(style)
+		holdDiv.appendChild(trexDiv)	
+		document.body.appendChild(holdDiv)
+		holdDiv.appendChild(godAudioDiv)
+	}
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-	trexify('assets/godzillaroar.mp3', 'assets/trex.png')
-})
+document.addEventListener("DOMContentLoaded", trexify('assets/godzillaroar.mp3', 'assets/trex.png'))
