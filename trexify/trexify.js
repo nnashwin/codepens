@@ -47,7 +47,7 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 		transform: scaleX(${transformMod});
 	}
 	#holdDiv {
-		animation-duration: 1s;
+		animation-duration: 0.7s;
 		animation-name: trexRun;
 		animation-iteration-count: 1;
 		animation-timing-function: smooth;
@@ -101,8 +101,5 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	trexify('godzillaroar.mp3', 'trex.png', 1)
-	setTimeout(() => {
-		trexify('godzillaroar.mp3', 'trex.png', 0)
-	}, 3000)
+	trexify('godzillaroar.mp3', 'trex.png', Math.round(Math.random()))
 })
