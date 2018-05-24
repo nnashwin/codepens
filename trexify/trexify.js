@@ -31,13 +31,15 @@ const createHoldDiv = (holdDivId) => {
 	return holdDiv
 }
 
-const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
+const trexify = (soundFileSrc, trexSrcImg) => {
 	const holdDiv = createHoldDiv('holdDiv'),
 		trexDiv = createTrexDiv(trexSrcImg),
 		godAudioDiv = createTrexSound(soundFileSrc)
 
 	let style = document.createElement('style')
 	style.type = 'text/css'
+
+	const randomNum = Math.round(Math.random())
 
 	const marginMod = randomNum > 0 ? '100%' : '-100%'
 	const transformMod = randomNum > 0 ? '-1' : '1'
@@ -101,5 +103,5 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	trexify('godzillaroar.mp3', 'trex.png', Math.round(Math.random()))
+	trexify('assets/godzillaroar.mp3', 'assets/trex.png')
 })
