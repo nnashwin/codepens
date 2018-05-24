@@ -38,8 +38,14 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 
 	let style = document.createElement('style')
 	style.type = 'text/css'
+
+	const marginMod = randomNum > 0 ? '100%' : '-100%'
+	const transformMod = randomNum > 0 ? '-1' : '1'
 	
 	let keyFrames = `
+	#trexImg {
+		transform: scaleX(${transformMod});
+	}
 	#holdDiv {
 		animation-duration: 1s;
 		animation-name: trexRun;
@@ -49,7 +55,7 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 	}
 	@-webkit-keyframes trexRun {
 		0%, 99% {
-			margin-left: -100%;
+			margin-left: ${marginMod};
 			width: 0;
 			height: 0;
 		}
@@ -59,7 +65,7 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 			display: block;
 		}
 		100% {
-			margin-left: -100%;
+			margin-left: ${marginMod};
 			width: 0;
 			height: 0;
 			display: none;
@@ -68,7 +74,7 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 	}
 	@-moz-keyframes trexRun {
 		0%, 99% {
-			margin-left: -100%;
+			margin-left: ${marginMod};
 			width: 0;
 			height: 0;
 		}
@@ -78,7 +84,7 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 			display: block;
 		}
 		100% {
-			margin-left: -100%;
+			margin-left: ${marginMod};
 			width: 0;
 			height: 0;
 			display: none;
@@ -95,5 +101,8 @@ const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-	trexify('godzillaroar.mp3', 'trex.png')
+	trexify('godzillaroar.mp3', 'trex.png', 1)
+	setTimeout(() => {
+		trexify('godzillaroar.mp3', 'trex.png', 0)
+	}, 3000)
 })
