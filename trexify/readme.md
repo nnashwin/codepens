@@ -1,6 +1,5 @@
 # Trexify
 > God creates dinosaurs, God kills dinosaurs, God creates man, man kills God, man brings back dinosaurs
-> A way to trexify any website you have!
 
 ## Install
 You need to download and add the script into an html file as such:
