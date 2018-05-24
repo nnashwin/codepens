@@ -1,17 +1,46 @@
-const trexify = () => {
-	const holdDiv = document.createElement('div')
-	holdDiv.id = "trexDiv"
-
+const createTrexDiv = (trexSrcImg) => {
 	const trexImg = document.createElement('img')
-	trexImg.src = "trex.png"
+	trexImg.src = trexSrcImg
 	trexImg.style.height = "100vh"
 	trexImg.style.width = "100vw"
+	trexImg.id = 'trexImg'
+
+	return trexImg
+}
+
+const createTrexSound = (trexRoarSrc) => {
+	let godAudioDiv = document.createElement('audio')
+	godAudioDiv.id = 'godzillaCry'
+	godAudioDiv.src = trexRoarSrc
+	godAudioDiv.autoplay = true
+	return godAudioDiv
+}
+
+const createHoldDiv = (holdDivId) => {
+	let holdDiv = document.getElementById('holdDiv')
+	if (holdDiv && holdDiv.childNodes.length > 0) {
+		Array.prototype.slice.call(holdDiv.childNodes).map((child) => {
+			return holdDiv.removeChild(child)
+		})
+
+		return document.getElementById(holdDivId)
+	}
+
+	holdDiv = document.createElement('div')
+	holdDiv.id = holdDivId
+	return holdDiv
+}
+
+const trexify = (soundFileSrc, trexSrcImg) => {
+	const holdDiv = createHoldDiv('holdDiv'),
+		trexDiv = createTrexDiv(trexSrcImg),
+		godAudioDiv = createTrexSound(soundFileSrc)
 
 	let style = document.createElement('style')
 	style.type = 'text/css'
-
+	
 	let keyFrames = '\
-	#trexDiv {\
+	#holdDiv {\
 		animation-duration: 1s;\
 		animation-name: trexRun;\
 		animation-iteration-count: 1;\
@@ -60,9 +89,11 @@ const trexify = () => {
 
 	style.innerHTML = keyFrames
 	holdDiv.appendChild(style)
-	holdDiv.appendChild(trexImg)
-
+	holdDiv.appendChild(trexDiv)	
 	document.body.appendChild(holdDiv)
+	holdDiv.appendChild(godAudioDiv)
 }
 
-document.addEventListener("DOMContentLoaded", trexify)
+document.addEventListener("DOMContentLoaded", () => {
+	trexify('godzillaroar.mp3', 'trex.png')
+})
