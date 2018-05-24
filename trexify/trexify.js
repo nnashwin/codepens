@@ -31,7 +31,7 @@ const createHoldDiv = (holdDivId) => {
 	return holdDiv
 }
 
-const trexify = (soundFileSrc, trexSrcImg) => {
+const trexify = (soundFileSrc, trexSrcImg, randomNum) => {
 	const holdDiv = createHoldDiv('holdDiv'),
 		trexDiv = createTrexDiv(trexSrcImg),
 		godAudioDiv = createTrexSound(soundFileSrc)
@@ -39,53 +39,53 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 	let style = document.createElement('style')
 	style.type = 'text/css'
 	
-	let keyFrames = '\
-	#holdDiv {\
-		animation-duration: 1s;\
-		animation-name: trexRun;\
-		animation-iteration-count: 1;\
-		animation-timing-function: smooth;\
-		animation-fill-mode: forwards;\
-	}\
-	@-webkit-keyframes trexRun {\
-		0%, 99% {\
-			margin-left: -100%;\
-			width: 0;\
-			height: 0;\
-		}\
-		50% {\
-			margin-left: 0%;\
-			width: 100%;\
-			display: block;\
-		}\
-		100% {\
-			margin-left: -100%;\
-			width: 0;\
-			height: 0;\
-			display: none;\
-			visibility: hidden;\
-		}\
-	}\
-	@-moz-keyframes trexRun {\
-		0%, 99% {\
-			margin-left: -100%;\
-			width: 0;\
-			height: 0;\
-		}\
-		50% {\
-			margin-left: 0%;\
-			width: 100%;\
-			display: block;\
-		}\
-		100% {\
-			margin-left: -100%;\
-			width: 0;\
-			height: 0;\
-			display: none;\
-			visibility: hidden;\
-		}\
-	}\
-	'
+	let keyFrames = `
+	#holdDiv {
+		animation-duration: 1s;
+		animation-name: trexRun;
+		animation-iteration-count: 1;
+		animation-timing-function: smooth;
+		animation-fill-mode: forwards;
+	}
+	@-webkit-keyframes trexRun {
+		0%, 99% {
+			margin-left: -100%;
+			width: 0;
+			height: 0;
+		}
+		50% {
+			margin-left: 0%;
+			width: 100%;
+			display: block;
+		}
+		100% {
+			margin-left: -100%;
+			width: 0;
+			height: 0;
+			display: none;
+			visibility: hidden;
+		}
+	}
+	@-moz-keyframes trexRun {
+		0%, 99% {
+			margin-left: -100%;
+			width: 0;
+			height: 0;
+		}
+		50% {
+			margin-left: 0%;
+			width: 100%;
+			display: block;
+		}
+		100% {
+			margin-left: -100%;
+			width: 0;
+			height: 0;
+			display: none;
+			visibility: hidden;
+		}
+	}
+	`
 
 	style.innerHTML = keyFrames
 	holdDiv.appendChild(style)
