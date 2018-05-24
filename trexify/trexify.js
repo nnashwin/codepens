@@ -49,6 +49,7 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 		let keyFrames = `
 		#trexImg {
 			transform: scaleX(${transformMod});
+			z-scale: 999999999999;
 		}
 		#holdDiv {
 			animation-duration: 0.7s;
@@ -56,6 +57,8 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 			animation-iteration-count: 1;
 			animation-timing-function: smooth;
 			animation-fill-mode: forwards;
+			height: 100vh;
+			width: 100vw;
 		}
 		@-webkit-keyframes trexRun {
 			0%, 99% {
@@ -104,5 +107,3 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 		holdDiv.appendChild(godAudioDiv)
 	}
 }
-
-document.addEventListener("DOMContentLoaded", trexify('assets/godzillaroar.mp3', 'assets/trex.png'))
