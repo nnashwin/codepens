@@ -52,10 +52,13 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 			z-scale: 999999999999;
 		}
 		#holdDiv {
-			animation-duration: 0.7s;
+			position: fixed;
+			top: 0;
+			left: 0;
+			animation-duration: 4.0s;
 			animation-name: trexRun;
 			animation-iteration-count: 1;
-			animation-timing-function: smooth;
+			animation-timing-function: cubic-bezier(1.51, .15);
 			animation-fill-mode: forwards;
 			height: 100vh;
 			width: 100vw;
@@ -66,7 +69,7 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 				width: 0;
 				height: 0;
 			}
-			50% {
+			05% {
 				margin-left: 0%;
 				width: 100%;
 				display: block;
@@ -85,7 +88,7 @@ const trexify = (soundFileSrc, trexSrcImg) => {
 				width: 0;
 				height: 0;
 			}
-			50% {
+			05% {
 				margin-left: 0%;
 				width: 100%;
 				display: block;
