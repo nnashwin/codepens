@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="index.css">
+  <script src="character.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      dict.strokes.map((stroke) => {
+      const path = document.createElementNS('SVG', 'path')
+      path.setAttributeNS(null, "d", stroke)
+      document.querySelector('#character > g')
+        .appendChild(path)
+
+      })
+    })
+  </script>
+</head>
+<body>
+  <svg id="character" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+    <g transform="scale(1, -1) translate(0, -900)" stroke="green"/>
+  </svg>
+</body>
+</html>
